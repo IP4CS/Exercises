@@ -9,7 +9,8 @@ def tip_calculator(bill):
     bill = float(bill)*(1+0.0625+0.15)
     return bill
 
-
+#take in the original price of the meal
 x = input("Hellp, I am your tip calculator. Please input your bill:")
+#print the total price of the meal to the screen
 print ("You should pay: %5.3f" %tip_calculator(x))
 
