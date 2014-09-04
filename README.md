@@ -1,0 +1,3 @@
+Exercises
+=========
+In Class Exercises
