@@ -1,0 +1,4 @@
+h=input("Please input the height of the experiment: ")
+from math import sqrt
+t=sqrt(2*h/9.8)
+print t
