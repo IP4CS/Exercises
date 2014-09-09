@@ -1,0 +1,15 @@
+# Sumin Kyoung
+
+print "Tip Calculator"
+
+"""This program will ask for the bill and prints the total price we need        
+pay which includes the tax and tip."""
+
+bill = input("Please input the bill: $")
+
+tax = 0.0625
+
+tip = 0.15
+price = bill*(1+tax+tip)
+
+print "You should pay %s dollars." % (price)
