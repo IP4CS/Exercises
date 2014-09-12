@@ -20,7 +20,7 @@ def IsitaPrime(x):
 		
 #upload the data from local computer; indicate the data type is Integer. 
 data = np.loadtxt('/Users/ying.tang/GitHub/Exercises/Data/SumAllPrimes.txt', int)
- 
+
 '''For code testing, i generated a small data file called data.txt to test if my
  code gives the correct sum, e.g. data.txt has [1,3, 10, 15, 101], the sum of all prime numbers
 should be 4. 
