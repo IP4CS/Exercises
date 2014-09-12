@@ -40,18 +40,20 @@ elif choice==2:
 	''' 
 	for the scatter plot 
 	'''
+	#upload the file saved in my /Users/ying.tang/GitHub/Exercises/Data dicectory
 	Stars = np.loadtxt("/Users/ying.tang/GitHub/Exercises/Data/stars.txt", float)
-	Magnitude = Stars[:,0]
-	Temperature = Stars[:,1]
-	pl.scatter(Magnitude, Temperature)
-	pl.title('Stars')
-	pl.xlabel('Temperature')
-	pl.ylabel('Magnitude')
+	Magnitude = Stars[:,0] #first column
+	Temperature = Stars[:,1] #second column
+	pl.scatter(Magnitude, Temperature)  #scatter plot
+	pl.title('Stars')  #make title
+	pl.xlabel('Temperature') #label x axis
+	pl.ylabel('Magnitude') #label y axis
 	pl.xlim(16000,0) #reverse the range, to make the 
 	pl.ylim(20,-5)   #reverse the range
 	pl.show()
 	
 elif choice==3:
+	#upload the circular.txt file saved in my /Users/ying.tang/GitHub/Exercises/Data dicectory
 	Density = np.loadtxt("/Users/ying.tang/GitHub/Exercises/Data/circular.txt", float)
 	
 	#check the shape and the dimension of the data
