@@ -1,3 +1,9 @@
+'''
+@ytang 09/23/2014
+This in-class exercise is importing the velocity versus time data "velocities.txt", and using trapezoidal method to integrate v over t
+to find the area, which is the displacement delta_x. 
+'''
+
 import numpy as np
 import pylab as pl
 
