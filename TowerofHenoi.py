@@ -1,4 +1,8 @@
-'''Tower of Hanoi
+'''
+Tower of Hanoi
+Object: to move n disks from one peg to another peg. Three pegs in total. 
+Rules: Move one disk at one time; Larger disk should never fall on top of the smaller one. 
+Keyword: Recursive thinking
 @ytang 11/06/2014
 '''
 
