@@ -53,47 +53,56 @@ def Magnetization(Nx, Ny, spin):
             
     return float(M)/float(Nx*Ny)
 
+def MonteCarloSweep(MCstep, spin, Nx, Ny):
+    E = Energy(Nx, Ny, spin)
+    M=Magnetization(Nx, Ny, spin)
+    #subroutine for Monte Carlo Sweep
+    for i in range(MCstep):
+        #pick a random spin with position x and y
+        sx, sy=ChooseSpin(Nx, Ny)
+        #the change of energy value 
+        deltaE= DeltaEnergy(sx, sy, Nx, Ny, spin)
+
+        #Metropolis Algorithm acceptance: 
+        if random.random()<PE[4+deltaE]:
+            spin[sx, sy]=-spin[sx, sy]
+            E += 2.0*deltaE
+            M += 2.0*float(spin[sx, sy])/float(Nx*Ny)
+    return E, M, spin 
+        
 Nx = int(raw_input('Give Nx: \n'))
 Ny = int(raw_input('Give Ny: \n'))
 global J
 J=-1.0
-beta= 0.2 #1/T
+beta= 1.0 #1/T
 MCstep=100000
+Nbin=10 #bin steps
 #Precalculated Probability Distribution
 PE=Prob(beta)
 
 #initial configuration of the 2D ising model
 spin = InitialConfiguraiton(Nx,Ny)
-E = Energy(Nx, Ny, spin)
-M=Magnetization(Nx, Ny, spin)
+
 Mlist=[]
 Elist=[]
-for i in range(MCstep):
-    #pick a random spin with position x and y
-    sx, sy=ChooseSpin(Nx, Ny)
-    #the change of energy value 
-    deltaE= DeltaEnergy(sx, sy, Nx, Ny, spin)
 
-    #Metropolis Algorithm acceptance: 
-    if random.random()<PE[4+deltaE]:
-        spin[sx, sy]=-spin[sx, sy]
-        E += 2.0*deltaE
-        M += 2.0*float(spin[sx, sy])/float(Nx*Ny)
-    
-    if (i%10==0):
-        Mlist.append(M)
-        Elist.append(E)
-        
-#print M
-#print Magnetization(Nx, Ny, spin)
+for i in range(Nbin):
+    E, M, spin = MonteCarloSweep(MCstep, spin, Nx, Ny)
+    Mlist.append(M)
+    Elist.append(E)
+
+Mlist=np.array(Mlist) 
+Mlist=abs(Mlist) #take the absolute value of Magnetization
+print "Magnetization: %f  "  %np.average(Mlist)
+print "Errorbar of Magnetization: %f"  %(np.std(Mlist)/np.sqrt(Nbin-1))
+
 plt.figure(1)
 plt.subplot(211)
 plt.plot(Mlist, label='Magnetization')
 plt.legend()
 plt.subplot(212)
 plt.plot(Elist, label='Energy')
-plt.xlabel('mc step')
+plt.xlabel('bin step')
 plt.legend()
 plt.matshow(spin, cmap=cm.gray)
 plt.show()
-            
