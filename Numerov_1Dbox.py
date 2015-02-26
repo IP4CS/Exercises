@@ -91,7 +91,6 @@ for j in range(5000):
 accuracy=1.0e-10
 E1=E-dE
 E2=E
-counter=0
 
 oldpsi2=psi[N-1] #with E
 
@@ -100,7 +99,7 @@ oldpsi1=psi[N-1] #with E-dE
 
 while E2-E1 > accuracy:
     E0=0.5*(E1+E2) #midpoint energy
-    print ('%16.16f   %16.16f' %(E1, E2))
+    #print ('%16.16f   %16.16f' %(E1, E2))
     psi=Numerov(E0)  #with (E-0.5dE)
     newpsi=psi[N-1]  #with (E-0.5dE), mid energy 
     
@@ -117,5 +116,3 @@ plt.plot(xpoints, psi)
 plt.ylabel('$\psi(x)$', size=15)
 plt.xlabel('x', size=15)
 plt.show()
-
-
