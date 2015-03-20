@@ -36,7 +36,7 @@ def Numerov(E):
     
     phi0=psi[0]
     fx = 2.0*(Potential(xpoints[1]) - E)
-    phi1=psi[1]*(1.0-delta_x*fx/12.0)
+    phi1=psi[1]*(1.0-dx2*fx/12.0)
     phi.append(phi0)
     phi.append(phi1)
 
