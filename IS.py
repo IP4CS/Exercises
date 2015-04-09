@@ -1,3 +1,6 @@
+'''
+code to simulate 2D ising model
+'''
 import numpy as np
 import random
 import matplotlib.pyplot as plt
